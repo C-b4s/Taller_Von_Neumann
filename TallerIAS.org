@@ -7,7 +7,7 @@
 #+title: Taller — Máquina IAS / Von Neumann
 #+subtitle: ICCD332 Arquitectura de Computadores
 #+author: Echeverría Steven, Jami Mateo, Pérez Martín y Zúñiga Sebastián
-#+email: 
+#+email: sebastian.zuniga@epn.edu.eces
 #+date: 2026-06-10
 #+language: es
 #+creator: Emacs 27.1 (Org mode 9.7.5)
@@ -198,8 +198,15 @@ IAS.
 
 
 
-#+begin_src
+#+begin_src asm
 LOAD M(940)
+SUB M(941)
+STOR M(940)
+LSH
+STOR M(941)
+LOAD -M(940)
+STOR M(940)
+HALT
 
 #+end_src
 
@@ -215,7 +222,7 @@ Complete la información de los integrantes del grupo.
 |                 |                         |             |
 |-----------------+-------------------------+-------------|
 
-* Verificación de Entregables [0%]
+* Verificación de Entregables [14%]
 
 Ejecute ~C-c C-c~ sobre los ítems de tarea según se hayan cumplido o
 no. Si un ítem no pudo realizarse, anote en la sección de problemas
@@ -224,7 +231,7 @@ las razones.
 - [ ] Tabla de instrucciones IAS completada.
 - [ ] Preguntas del ejercicio respondidas.
 - [ ] Código RTL completo.
-- [ ] Código Assembler completo.
+- [X] Código Assembler completo.
 - [ ] Revisión de ortografía con ~ispell-buffer~.
 - [ ] Exportación a PDF con ~M-x org-latex-export-to-pdf~.
 - [ ] Subir al aula virtual archivo ~.org~ y ~.pdf~.
