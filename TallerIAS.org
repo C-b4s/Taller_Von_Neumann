@@ -112,9 +112,20 @@ sobre las palabras clave.
     00001010 & 0x0A       &  LOAD MQ          & $[AC]\leftarrow[MQ]$\\
     00001001 & 0x09       &  LOAD MQ, M(X)    & $[MQ]\leftarrow[X]$\\
     00100001 & 0x21       &  STOR M(X)        & $[X]\leftarrow[AC]$\\
-    00000010 & 0x02       &  LOAD M(X)        & $[AC]\leftarrow[X]$\\
+    00000001 & 0x01       &  LOAD M(X)        & $[AC]\leftarrow[X]$\\
+    00000010 & 0x02 	  &  LOAD -M(X)       & $[AC]\leftarrow-[X]$\\
     00000011 & 0x03       &  LOAD |M(X)|      & $[AC]\leftarrow|[X]|$\\
     00000100 & 0x04       &  LOAD -|M(X)|     & $[AC]\leftarrow-|[X]|$\\
+    00000101 & 0x05	  &  ADD M(X)	      & $[AC]\leftarrow[AC]+[X]$\\
+    00000111 & 0x07       &  ADD |M(X)|       & $[AC]\leftarrow[AC]+|[X]|$\\
+    00000110 & 0x06       &  SUB M(X)         & $[AC]\leftarrow[AC]-[X]$\\
+    00001000 & 0x08       &  SUB |M(X)|       & $[AC]\leftarrow[AC]-|[X]|$\\
+    00001011 & 0x0B       &  MUL M(X)         & $[AC]:[MQ]\leftarrow[MQ]\times[X]$\\
+    00001100 & 0x0C       &  DIV M(X)         & $[MQ]\leftarrow[AC]\div[X];\quad[AC]\leftarrow[AC]\bmod[X]$\\
+    00010100 & 0x14       &  LSH	      & $[AC]\leftarrow[AC]\times2$\\
+    00010101 & 0x15       &  RSH              & $[AC]\leftarrow[AC]\div2$\\
+    00010010 & 0x12       &  STOR M(X,8:19)   & $[X]_{8:19} \leftarrow[AC]_{28:39}$\\
+    00010011 & 0x13       &  STOR M(X,28:39)  & $[X]_{28:39}\leftarrow[AC]_{28:39}$\\    
     \hline
   \end{tabular}
 \end{table}
