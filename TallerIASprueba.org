@@ -8,7 +8,7 @@
 #+subtitle: ICCD332 Arquitectura de Computadores
 #+author: Echeverría Steven, Jami Mateo, Pérez Martín y Zúñiga Sebastián
 #+email: sebastian.zuniga@epn.edu.eces
-#+date: 2026-06-12
+#+date: 2026-06-10
 #+language: es
 #+creator: Emacs 27.1 (Org mode 9.7.5)
 #+cite_export: biblatex
@@ -36,7 +36,7 @@
 #+BIBLIOGRAPHY: ../bibliography/bibliography.bib
 
 #+begin_export latex
-\fancyhead[C]{\includegraphics[scale=0.05]{logoEpn.jpg}\\
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
 ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
 ARQUITECTURA DE COMPUTADORES}
 \thispagestyle{fancy}
@@ -167,44 +167,20 @@ RTL.
 1. ¿Qué resultado se tiene al final en el registro del acumulador?
 
    Respuesta:
-   $[AC] \leftarrow 0xFFFFFFFFFD$
+   $[AC] \leftarrow ???$
 
 2. ¿Se sobrescribe algún registro como resultado de la ejecución? Si
    es verdadero, indique qué registro y con qué valor.
    Respuesta:
-   - $[940] \leftarrow 0x0000000003$
-     Este se sobrescribe primero en la ejecución de la segunda
-     dirección, en la parte izquierda.
-   - $[940] \leftarrow 0xFFFFFFFFFD$
-     Este se vuelve a sobrescribir en la ejecución de la cuarta
-     dirección, en la parte izquierda. A su vez coincide con el valor
-     final del $[AC]$. 
-   - $[941] \leftarrow 0x0000000006$
-     Este se sobrescribe en la ejecución de la tercera dirección en la
-     parte izquierda.
-   - $[AC] \leftarrow 0x0000000005$
-     Primero se sobrescribe en la ejecución de la primera dirección en
-     la parte izquierda.
-   - $[AC] \leftarrow 0x0000000003$
-     Se sobrescribe por segunda vez, en la ejecución de la primera
-     dirección, pero esta vez por la parte izquierda.
-   - $[AC] \leftarrow 0x0000000006$
-     Se sobrescribe por tercera vez, en la ejecución de la segunda
-     dirección, por la parte derecha.
-   - $[AC] \leftarrow 0xFFFFFFFFFD$
-     Se sobrescribe por cuarta vez, en la ejecución de la tercera
-     dirección, por la parte derecha. Y en la cuarta dirección ya no
-     cambia por los OPCODE que se ejecutaron.
+   - $[940] \leftarrow ???$
+   - $[941] \leftarrow ???$
+   - $[AC] \leftarrow ???$
 
 3. ¿Cuál es el valor del bit de Carry? ¿Qué operación modifica el bit?
    Respuesta:
-   - $Carry = 1$
+   - $Carry = ???$
 
-   - Este único carry, se tiene durante la ejecución de la primera
-     dirección por la parte derecha, porque cuando se trata de hacer
-     la suma con un complemento, este supera el valor hexadecimal
-     máximo para sus bits, por lo que tiene un carry de 1 hasta el
-     final de la ejecución de dicha dirección.
+   - 
 
 *** Código RTL
 
@@ -212,13 +188,7 @@ Escriba en notación de transferencia de registros el programa que
 ejecuta el computador IAS.
 
  - $[AC] \leftarrow [940]$
- - $[AC] \leftarrow [AC] - [941]$
- - $[940] \leftarrow [AC]$
- - $[AC] \leftarrow [AC] \times 2$
- - $[941] \leftarrow [AC]$
- - $[AC] \leftarrow [940]$
- - $[940] \leftarrow [AC]$
- - $HALT$
+ - ...
 
 
 *** Código Assembler
@@ -244,16 +214,15 @@ HALT
 
 Complete la información de los integrantes del grupo.
 
-|-------------------+-----------------------------+-------------|
-| Nombre            | Email                       | Rol         |
-|-------------------+-----------------------------+-------------|
-| Sebastián Zúñiga  | sebastian.zuniga@epn.edu.ec | Líder       |
-| Steven Echeverría |                             | Colaborador |
-| Mateo Jami        | mateo.jami@epn.edu.ec       | Colaborador |
-| Martín Pérez      | martin.perez@epn.edu.ec     | Colaborador |
-|-------------------+-----------------------------+-------------|
+|-----------------+-------------------------+-------------|
+| Nombre          | Email                   | Rol         |
+|-----------------+-------------------------+-------------|
+|                 |                         |             |
+|                 |                         |             |
+|                 |                         |             |
+|-----------------+-------------------------+-------------|
 
-* Verificación de Entregables [28%]
+* Verificación de Entregables [14%]
 
 Ejecute ~C-c C-c~ sobre los ítems de tarea según se hayan cumplido o
 no. Si un ítem no pudo realizarse, anote en la sección de problemas
@@ -261,7 +230,7 @@ las razones.
 
 - [ ] Tabla de instrucciones IAS completada.
 - [ ] Preguntas del ejercicio respondidas.
-- [X] Código RTL completo.
+- [ ] Código RTL completo.
 - [X] Código Assembler completo.
 - [ ] Revisión de ortografía con ~ispell-buffer~.
 - [ ] Exportación a PDF con ~M-x org-latex-export-to-pdf~.
