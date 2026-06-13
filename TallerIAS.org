@@ -188,7 +188,13 @@ Escriba en notación de transferencia de registros el programa que
 ejecuta el computador IAS.
 
  - $[AC] \leftarrow [940]$
- - ...
+ - $[AC] \leftarrow [AC] - [941]$
+ - $[940] \leftarrow [AC]$
+ - $[AC] \leftarrow [AC] \times 2$
+ - $[941] \leftarrow [AC]$
+ - $[AC] \leftarrow [940]$
+ - $[940] \leftarrow [AC]$
+ - $HALT$
 
 
 *** Código Assembler
