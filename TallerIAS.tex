@@ -1,3 +1,4 @@
+% Created 2026-06-12 Fri 22:35
 % Created 2026-06-12 Fri 22:01
 % Intended LaTeX compiler: pdflatex
 \documentclass{article}
@@ -23,7 +24,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage[backend=biber]{biblatex}
-\addbibresource{/home/sebaszun-epn/bibliography/bibliography.bib}
+\addbibresource{/home/mateoijt-epn/RepoTrabajosGrupales/bibliography/bibliography.bib}
 \author{Echeverría Steven, Jami Mateo, Pérez Martín y Zúñiga Sebastián}
 \date{2026-06-10}
 \title{Taller — Máquina IAS / Von Neumann\\\medskip
@@ -44,6 +45,7 @@ ARQUITECTURA DE COMPUTADORES}
 \thispagestyle{fancy}
 
 \section{Objetivos}
+\label{sec:org410dc89}
 \label{sec:org27fbcaf}
 
 \begin{itemize}
@@ -56,18 +58,21 @@ para determinar el estado final de los registros.
 \end{itemize}
 
 \section{Instrucciones}
+\label{sec:org32603aa}
 \label{sec:orga12b374}
 
 Complete las solicitudes del taller y suba el archivo \texttt{.org} y \texttt{.pdf}
 al aula virtual. Use las combinaciones de teclado para trabajar en Emacs.
 
 \section{Recursos}
+\label{sec:org5d63064}
 \label{sec:orgc747197}
 
 Para este taller consulte el libro \citetitle{stallings2006esp}
 disponible en \href{https://epnecuador-my.sharepoint.com/:f:/g/personal/lenin\_falconi\_epn\_edu\_ec/EgjH2RoedD5NuswqpOt8ExsB\_DE052v9Rlrg0QpEtbimDg?e=WoqexR}{EPN-SHAREPOINT (Clic aquí)} y use su WSL con Emacs para editar el archivo.
 
 \subsection{Observaciones y Recomendaciones}
+\label{sec:org16e4ff0}
 \label{sec:org4cc2ebd}
 \begin{itemize}
 \item Tenga en cuenta la ruta a las imágenes y a la bibliografía. Se le
@@ -78,6 +83,7 @@ estar operativa y funcional (es decir, Emacs, \LaTeX).
 \end{itemize}
 
 \section{Taller: Máquina de Von Neumann}
+\label{sec:org25bf15c}
 \label{sec:org611dafa}
 
 La máquina de Von Neumann realiza operaciones en un ciclo repetitivo de
@@ -91,6 +97,7 @@ primeros bits de cada parte corresponden al \emph{opcode} y los restantes
 leer o a la que se debe escribir.
 
 \subsection{Conjunto de Instrucciones IAS}
+\label{sec:org92bed04}
 \label{sec:org0e5ad30}
 
 Complete la Tabla \ref{tab:tablaISA-IAS}  de instrucciones del computador IAS
@@ -145,6 +152,7 @@ sobre las palabras clave.
 \newpage
 
 \subsection{Ejercicio}
+\label{sec:orgd90cec5}
 \label{sec:org2996c8c}
 
 En la máquina IAS, las instrucciones se dividen en dos segmentos:
@@ -154,11 +162,13 @@ contador de programa inicia en la posición \([PC] \leftarrow 300\). El conjunto
 instrucciones del computador o ISA\footnote{Instruction Set Architecture: conjunto de instrucciones que la máquina IAS puede interpretar y ejecutar.} está definido en la Tabla
 \ref{tab:tablaISA-IAS}. A fin de terminar el programa, se agrega la
 instrucción \texttt{0x99} que lleva al computador al estado de HALT. Conteste las
+siguientes preguntas considerando la Tabla \ref{tab:orge5a7e5d} como el
 siguientes preguntas considerando la Tabla \ref{tab:org1bbed3a} como el
 mapa de memoria de la máquina y obtenga el programa en lenguaje ensamblador y en
 RTL.
 
 \begin{table}[htbp]
+\caption{\label{tab:orge5a7e5d}Mapa de Memoria}
 \caption{\label{tab:org1bbed3a}Mapa de Memoria}
 \centering
 \begin{tabular}{rrrrr}
@@ -177,33 +187,59 @@ Dirección & \(Opcode_1\) & \(X_1\) & \(Opcode_2\) & \(X_2\)\\[0pt]
 \end{table}
 
 \subsubsection{Preguntas}
+\label{sec:orgdc5cfbe}
 \label{sec:orge138103}
 
 \begin{enumerate}
 \item ¿Qué resultado se tiene al final en el registro del acumulador?
 
 Respuesta:
-\([AC] \leftarrow ???\)
+\([AC] \leftarrow 0xFFFFFFFFFD\)
 
 \item ¿Se sobrescribe algún registro como resultado de la ejecución? Si
 es verdadero, indique qué registro y con qué valor.
 Respuesta:
 \begin{itemize}
-\item \([940] \leftarrow ???\)
-\item \([941] \leftarrow ???\)
-\item \([AC] \leftarrow ???\)
+\item \([940] \leftarrow 0x0000000003\)
+Este se sobrescribe primero en la ejecución de la segunda
+dirección, en la parte izquierda.
+\item \([940] \leftarrow 0xFFFFFFFFFD\)
+Este se vuelve a sobrescribir en la ejecución de la cuarta
+dirección, en la parte izquierda. A su vez coincide con el valor
+final del \([AC]\).
+\item \([941] \leftarrow 0x0000000006\)
+Este se sobrescribe en la ejecución de la tercera dirección en la
+parte izquierda.
+\item \([AC] \leftarrow 0x0000000005\)
+Primero se sobrescribe en la ejecución de la primera dirección en
+la parte izquierda.
+\item \([AC] \leftarrow 0x0000000003\)
+Se sobrescribe por segunda vez, en la ejecución de la primera
+dirección, pero esta vez por la parte izquierda.
+\item \([AC] \leftarrow 0x0000000006\)
+Se sobrescribe por tercera vez, en la ejecución de la segunda
+dirección, por la parte derecha.
+\item \([AC] \leftarrow 0xFFFFFFFFFD\)
+Se sobrescribe por cuarta vez, en la ejecución de la tercera
+dirección, por la parte derecha. Y en la cuarta dirección ya no
+cambia por los OPCODE que se ejecutaron.
 \end{itemize}
 
 \item ¿Cuál es el valor del bit de Carry? ¿Qué operación modifica el bit?
 Respuesta:
 \begin{itemize}
-\item \(Carry = ???\)
+\item \(Carry = 1\)
 
-\item 
+\item Este único carry, se tiene durante la ejecución de la primera
+dirección por la parte derecha, porque cuando se trata de hacer
+la suma con un complemento, este supera el valor hexadecimal
+máximo para sus bits, por lo que tiene un carry de 1 hasta el
+final de la ejecución de dicha dirección.
 \end{itemize}
 \end{enumerate}
 
 \subsubsection{Código RTL}
+\label{sec:org0ef8b15}
 \label{sec:orgc51d411}
 
 Escriba en notación de transferencia de registros el programa que
@@ -222,6 +258,7 @@ ejecuta el computador IAS.
 
 
 \subsubsection{Código Assembler}
+\label{sec:orgd995192}
 \label{sec:orgafa99c9}
 
 Escriba el código Assembler del programa que ejecuta el computador
@@ -242,6 +279,7 @@ HALT
 \end{verbatim}
 
 \section{Equipo de Trabajo}
+\label{sec:org5a4d27c}
 \label{sec:orgefe8f18}
 
 Complete la información de los integrantes del grupo.
@@ -259,6 +297,8 @@ Martín Pérez &  & \\[0pt]
 \end{tabular}
 \end{center}
 
+\section{Verificación de Entregables [14\%]}
+\label{sec:org488e835}
 \section{Verificación de Entregables [28\%]}
 \label{sec:orgc4381b9}
 
@@ -269,6 +309,7 @@ las razones.
 \begin{itemize}
 \item[{$\square$}] Tabla de instrucciones IAS completada.
 \item[{$\square$}] Preguntas del ejercicio respondidas.
+\item[{$\square$}] Código RTL completo.
 \item[{$\boxtimes$}] Código RTL completo.
 \item[{$\boxtimes$}] Código Assembler completo.
 \item[{$\square$}] Revisión de ortografía con \texttt{ispell-buffer}.
@@ -277,6 +318,7 @@ las razones.
 \end{itemize}
 
 \subsection{Problemas con la tarea / logísticos}
+\label{sec:org1fa6f45}
 \label{sec:org701822f}
 
 \begin{itemize}

@@ -167,20 +167,44 @@ RTL.
 1. ¿Qué resultado se tiene al final en el registro del acumulador?
 
    Respuesta:
-   $[AC] \leftarrow ???$
+   $[AC] \leftarrow 0xFFFFFFFFFD$
 
 2. ¿Se sobrescribe algún registro como resultado de la ejecución? Si
    es verdadero, indique qué registro y con qué valor.
    Respuesta:
-   - $[940] \leftarrow ???$
-   - $[941] \leftarrow ???$
-   - $[AC] \leftarrow ???$
+   - $[940] \leftarrow 0x0000000003$
+     Este se sobrescribe primero en la ejecución de la segunda
+     dirección, en la parte izquierda.
+   - $[940] \leftarrow 0xFFFFFFFFFD$
+     Este se vuelve a sobrescribir en la ejecución de la cuarta
+     dirección, en la parte izquierda. A su vez coincide con el valor
+     final del $[AC]$. 
+   - $[941] \leftarrow 0x0000000006$
+     Este se sobrescribe en la ejecución de la tercera dirección en la
+     parte izquierda.
+   - $[AC] \leftarrow 0x0000000005$
+     Primero se sobrescribe en la ejecución de la primera dirección en
+     la parte izquierda.
+   - $[AC] \leftarrow 0x0000000003$
+     Se sobrescribe por segunda vez, en la ejecución de la primera
+     dirección, pero esta vez por la parte izquierda.
+   - $[AC] \leftarrow 0x0000000006$
+     Se sobrescribe por tercera vez, en la ejecución de la segunda
+     dirección, por la parte derecha.
+   - $[AC] \leftarrow 0xFFFFFFFFFD$
+     Se sobrescribe por cuarta vez, en la ejecución de la tercera
+     dirección, por la parte derecha. Y en la cuarta dirección ya no
+     cambia por los OPCODE que se ejecutaron.
 
 3. ¿Cuál es el valor del bit de Carry? ¿Qué operación modifica el bit?
    Respuesta:
-   - $Carry = ???$
+   - $Carry = 1$
 
-   - 
+   - Este único carry, se tiene durante la ejecución de la primera
+     dirección por la parte derecha, porque cuando se trata de hacer
+     la suma con un complemento, este supera el valor hexadecimal
+     máximo para sus bits, por lo que tiene un carry de 1 hasta el
+     final de la ejecución de dicha dirección.
 
 *** Código RTL
 
