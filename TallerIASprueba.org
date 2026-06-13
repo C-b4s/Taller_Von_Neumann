@@ -8,7 +8,7 @@
 #+subtitle: ICCD332 Arquitectura de Computadores
 #+author: Echeverría Steven, Jami Mateo, Pérez Martín y Zúñiga Sebastián
 #+email: sebastian.zuniga@epn.edu.eces
-#+date: 2026-06-12
+#+date: 2026-06-10
 #+language: es
 #+creator: Emacs 27.1 (Org mode 9.7.5)
 #+cite_export: biblatex
@@ -36,7 +36,7 @@
 #+BIBLIOGRAPHY: ../bibliography/bibliography.bib
 
 #+begin_export latex
-\fancyhead[C]{\includegraphics[scale=0.05]{logoEpn.jpg}\\
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
 ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
 ARQUITECTURA DE COMPUTADORES}
 \thispagestyle{fancy}
@@ -188,13 +188,7 @@ Escriba en notación de transferencia de registros el programa que
 ejecuta el computador IAS.
 
  - $[AC] \leftarrow [940]$
- - $[AC] \leftarrow [AC] - [941]$
- - $[940] \leftarrow [AC]$
- - $[AC] \leftarrow [AC] \times 2$
- - $[941] \leftarrow [AC]$
- - $[AC] \leftarrow [940]$
- - $[940] \leftarrow [AC]$
- - $HALT$
+ - ...
 
 
 *** Código Assembler
@@ -220,16 +214,15 @@ HALT
 
 Complete la información de los integrantes del grupo.
 
-|-------------------+-----------------------------+-------------|
-| Nombre            | Email                       | Rol         |
-|-------------------+-----------------------------+-------------|
-| Sebastián Zúñiga  | sebastian.zuniga@epn.edu.ec | Líder       |
-| Steven Echeverría |                             | Colaborador |
-| Mateo Jami        | mateo.jami@epn.edu.ec       | Colaborador |
-| Martín Pérez      | martin.perez@epn.edu.ec     | Colaborador |
-|-------------------+-----------------------------+-------------|
+|-----------------+-------------------------+-------------|
+| Nombre          | Email                   | Rol         |
+|-----------------+-------------------------+-------------|
+|                 |                         |             |
+|                 |                         |             |
+|                 |                         |             |
+|-----------------+-------------------------+-------------|
 
-* Verificación de Entregables [28%]
+* Verificación de Entregables [14%]
 
 Ejecute ~C-c C-c~ sobre los ítems de tarea según se hayan cumplido o
 no. Si un ítem no pudo realizarse, anote en la sección de problemas
@@ -237,7 +230,7 @@ las razones.
 
 - [ ] Tabla de instrucciones IAS completada.
 - [ ] Preguntas del ejercicio respondidas.
-- [X] Código RTL completo.
+- [ ] Código RTL completo.
 - [X] Código Assembler completo.
 - [ ] Revisión de ortografía con ~ispell-buffer~.
 - [ ] Exportación a PDF con ~M-x org-latex-export-to-pdf~.
