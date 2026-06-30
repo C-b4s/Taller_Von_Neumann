@@ -281,7 +281,14 @@ distro de /Linux/ o el /WSL/ configurado para la clase de
        #+begin_src shell :exports both
 
        cd home/sebaszun-epn/
-       !Para esto, primero es necesario ejecutar el comando 
+       emacs --batch -l org --eval '(org-babel-tangle-file "Grupo4_TallerComandosLinux.org")'
+       touch get-weather.sh
+
+       #!/bin/bash
+       python get-weather.py
+       
+       chmod +x get-weather.py
+       ./getweather.sh
 
 
        #+end_src
@@ -291,4 +298,12 @@ distro de /Linux/ o el /WSL/ configurado para la clase de
 
     4. Configurar Crontab para la adquisición de datos. Escriba el
        comando configurado.
-       
+        #+begin_src shell :exports both
+
+        crontab -e
+        */5 * * * * /home/sebaszun-epn/CityWeather/get-weather.sh
+
+
+       #+end_src
+
+       #+RESULTS:
